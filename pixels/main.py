@@ -31,3 +31,13 @@ async def get_index() -> Response:
     """A status endpoint."""
 
     return Response(status_code=200)
+
+
+@app.get("/pixels")
+async def get_pixels() -> Response:
+    return Response(bytes(await db.get_pixels()), media_type="application/octet-stream")
+
+
+@app.post("/pixels/{x}/{y}/{colour}")
+async def set_pixel(x: int, y: int, colour: str):
+    await db.set_pixel(x, y, colour)
