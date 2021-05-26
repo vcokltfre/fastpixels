@@ -17,7 +17,7 @@ taskipy = "^1.8.1"
 [tool.poetry.dev-dependencies]
 
 [tool.taskipy.tasks]
-start-dev = "uvicorn pixels.main:app --reload"
+start-dev = "uvicorn pixels.main:app --reload --env-file .env"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
