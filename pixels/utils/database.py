@@ -33,8 +33,8 @@ class Database:
             await self.redis.execute("SET", "pixels_state", pixels)
 
     async def get_pixels(self) -> bytearray:
-        return await self.redis.get("pixels_state")
+        return await self.redis.execute("GET", "pixels_state")
 
     async def set_pixel(self, x: int, y: int, value: str) -> None:
         offset = (y * 128 + x) * 3
-        await self.redis.execute("SETRANGE", offset, bytes.fromhex(value))
+        await self.redis.execute("SETRANGE", "pixels_state", offset, bytes.fromhex(value))
