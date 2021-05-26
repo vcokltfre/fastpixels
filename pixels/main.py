@@ -40,4 +40,5 @@ async def get_pixels() -> Response:
 
 @app.post("/pixels/{x}/{y}/{colour}")
 async def set_pixel(x: int, y: int, colour: str):
+    if len(colour) != 6: return
     await db.set_pixel(x, y, colour)
