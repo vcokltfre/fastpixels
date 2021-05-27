@@ -1,6 +1,6 @@
 from typing import Callable
 
-from fastapi import FastAPI, Response, Request
+from fastapi import FastAPI, Response, Request, WebSocket
 
 from pixels.utils.database import Database
 
@@ -42,3 +42,11 @@ async def get_pixels() -> Response:
 async def set_pixel(x: int, y: int, colour: str):
     if len(colour) != 6: return
     await db.set_pixel(x, y, colour)
+
+@app.websocket("/ws")
+async def init_ws(ws: WebSocket) -> None:
+    await ws.accept()
+
+    while True:
+        data = await ws.receive_json()
+        await db.set_pixel(data["x"], data["y"], data["colour"])
