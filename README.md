@@ -1,3 +1,3 @@
 # Pixels
 
-A shared virtual canvas you can darw on.
+A shared virtual canvas you can draw on.

@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "custompixels"
 version = "1.0.0"
-description = "A shared virtual canvas you can darw on."
+description = "A shared virtual canvas you can draw on."
 authors = ["vcokltfre <vcokltfre@gmail.com>"]
 license = "MIT"
 
